@@ -4,3 +4,7 @@
     <strong>A simple actor built directly with Tokio</strong>
   </p>
 </div>
+
+## References
+
+Tokio's official tutorial - [Spawning](https://tokio.rs/tokio/tutorial/spawning) & [Channels](https://tokio.rs/tokio/tutorial/channels).
