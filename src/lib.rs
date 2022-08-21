@@ -1,23 +1,23 @@
 use tokio::sync::{mpsc, oneshot};
 
-pub struct Actor {
+struct Actor {
     receiver: mpsc::Receiver<ActorMessage>,
     next_id: u32,
 }
 
-pub enum ActorMessage {
+enum ActorMessage {
     GetUniqueId { respond_to: oneshot::Sender<u32> },
 }
 
 impl Actor {
-    pub fn new(receiver: mpsc::Receiver<ActorMessage>) -> Self {
+    fn new(receiver: mpsc::Receiver<ActorMessage>) -> Self {
         Self {
             receiver,
             next_id: 0,
         }
     }
 
-    pub fn handle_message(&mut self, msg: ActorMessage) {
+    fn handle_message(&mut self, msg: ActorMessage) {
         match msg {
             ActorMessage::GetUniqueId { respond_to } => {
                 self.next_id += 1;
